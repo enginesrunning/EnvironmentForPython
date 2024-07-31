@@ -1,0 +1,77 @@
+1. Fisier nou .py pe desktop (directory)
+2. Creaza cmd cu comanda 'python -m venv myenv'
+3. Tot cmd in myenv\Scripts\activate
+4. (myenv) in cmd  cu comanda pip install (librarie), de exemplu numpy,.
+
+Yes sau install la orice pop-up sau proces
+
+
+
+with open('C:\Users\uig95551\Desktop\document.xlsx') as ExcelFile:
+    ExcelFileReader = excel.Reader(ExcelFile, delimiter='\n')
+    line_count = 0
+    for row in excel.Reader:
+        if line_count == 0:
+            print(f'Column names are {", ".join(row)}')
+            line_count += 1
+        else:
+            #print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
+            line_count += 1
+    print(f'Processed {line_count} lines.')
+
+
+#! C:\Users\uig95551\Desktop\summer practice\myenv\Scripts\python.exe
+import subprocess
+import sys
+
+
+#throw exception handler for multiple machines
+
+try:    
+    import openpyxl
+    import pandas as pd
+    import numpy as ny
+except ImportError:
+    subprocess.check_call([sys.executable,'-m','pip','install','openpyxl'])
+    subprocess.check_call([sys.executable,'-m','pip','install','pandas'])
+    subprocess.check_call([sys.executable,'-m','pip','install','numpy'])
+    import openpyxl
+    import pandas as pd
+    import numpy as ny
+
+
+
+
+
+
+
+
+workbook = openpyxl.load_workbook('document.xlsx')
+SheetNames = workbook.sheetnames
+print (SheetNames) #prints list of sheets in indexing oder
+
+
+
+
+
+for sheet in SheetNames:
+
+    
+    if workbook[sheet].max_row > 1:
+        print (sheet)
+    else:
+        workbook.remove(workbook[sheet])
+    
+workbook.save ("moddocument.xlsx")
+
+
+#pip
+.
+
+
+
+"""
+Order the sheets in an Excel spreadsheet so that a user introduces a number for the sheet that needs to be displayed
+"""
+
+
